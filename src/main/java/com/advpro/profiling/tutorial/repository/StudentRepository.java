@@ -4,9 +4,11 @@ import com.advpro.profiling.tutorial.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-/**
- * @author muhammad.khadafi
- */
+import java.util.Optional;
+
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
+
+    // OPTIMIZED: replaces manual loop in service
+    Optional<Student> findTopByOrderByGpaDesc();
 }
